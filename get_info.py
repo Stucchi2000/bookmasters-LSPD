@@ -22,10 +22,8 @@ class BookRecords():
 def main():
     
     books = BookRecords()
-
-    print(books.labels)
- 
-    display(books.suggestion('tragedy').min())
+    print(books['title'])
+    print(books['category'])
     
     
     
