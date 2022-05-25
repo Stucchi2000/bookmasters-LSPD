@@ -24,10 +24,3 @@ def main():
     books = BookRecords()
     print(books['title'])
     print(books['category'])
-    
-    
-    
-    
-if __name__=='__main__':
-    
-    main()
