@@ -9,7 +9,7 @@ def input_suggestion(dataset):
     opts = ['recent', 'old', 'min_page', 'max_page', 'best', 'worst', 'display']
     if len(suggs) > 1:
         key = None
-        while key not in opts:  #dataset.labels.append('display'):
+        while key not in opts:  # dataset.labels.append('display'):
             key = input(f"------------------------------------------------\nType:\n\n- recent - for most recent title\n- old - for oldest title\n- max_page - for maximum page number\n- min_page - for minimum page number\n- best - for best book\n- worst - for worst book\n- display - if you want me to show all of them\n\n")
             if key not in opts:
                 print(f"Input {key} not recognized, please try again...")
@@ -27,6 +27,6 @@ def input_suggestion(dataset):
         print(f"My suggestion is...{suggs.loc[suggs['rating'].astype(int).idxmin()]}\n")
     elif key == 'display':
         print(f"Displaying all results \n{suggs}\n")
-         
+    
     else:
         print(f"My suggestion is...{suggs}")
