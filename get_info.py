@@ -9,7 +9,7 @@ from IPython.display import display
 
 
 class BookRecords():
-    
+
     def get_info(self, title, info):
         # Check existence of column label
         if title not in self['title'].values:
@@ -20,7 +20,7 @@ class BookRecords():
 
 
 def main():
-    
+
     books = BookRecords()
     print(books['title'])
     print(books['category'])
