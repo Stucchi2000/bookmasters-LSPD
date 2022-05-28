@@ -10,7 +10,7 @@ from IPython.display import display
 
 class BookRecords():
 
-    def __init__(self, data_path = "./df_book.csv"):
+    def __init__(self, data_path = "./df_books.csv"):
         # Check existence of dataset
         if not os.path.exists(data_path):
             raise AssertionError(f"Provided path \'{data_path}\' doesn\'t exist")
