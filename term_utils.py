@@ -3,7 +3,7 @@
 def input_search(dataset):
     # needed to run search function in main.py
     data = dataset
-    while len(data)>1:
+    while len(data) > 1:
         criterion = None
         while criterion not in data.labels:
             criterion = input(f"------------------------------------------------\nPlease insert which criterion you want to restrict your research to... \n Choose among the following: {data.labels})\n")
@@ -19,7 +19,7 @@ def input_search(dataset):
         result, indexes = data.search(criterion, string, out_crit)
         data.data = data.data.loc[indexes]
         # asking to refine the search
-        if len(data)>1:
+        if len(data) > 1:
             print(f"------------------------------------------------\nThe search gave {len(data)} matching outputs, do you want to refine the search?")
             cmd = input("Type \n-no- if you want to stop the search\n-display- to display the outputs: \n").lower()
             if cmd == 'no':
@@ -28,7 +28,7 @@ def input_search(dataset):
                 print(f'\nKeyword - {string} - matched: \n\t{result.values}\n\n')
         else:
             print(f'\nKeyword - {string} - matched: \n\t{result.values}\n\n')
-            
+ 
 
 def input_request(dataset):
     # needed to run get_info function in main.py
@@ -46,10 +46,10 @@ def input_request(dataset):
             result, _ = dataset.search('title', title)
             print(f'Book title {title} not present in dataset...\n\nDid you mean one of these: {result.values}???')
         else:
-            break        
+            break    
     dataset.get_info(title, criterion)
-    
-    
+
+
 def input_suggestion(dataset):
     # needed to run suggestion function in main.py
     genre = None
@@ -58,9 +58,9 @@ def input_suggestion(dataset):
         if genre not in dataset.genres:
             print(f"{genre} not recognized please try again...")
     # get suggestion list by genre
-    suggs = dataset.suggestion(genre)[['title','author','category','publication_year','page_number','rating']]
-    opts = ['recent','old','min_page','max_page','best','worst','display']
-    if len(suggs)>1:
+    suggs = dataset.suggestion(genre)[['title', 'author','category', 'publication_year', 'page_number', 'rating']]
+    opts = ['recent', 'old', 'min_page', 'max_page', 'best', 'worst', 'display']
+    if len(suggs) > 1:
         key = None
         while key not in opts:
             # asking on which option to base the suggestion
@@ -81,8 +81,7 @@ def input_suggestion(dataset):
         print(f"My suggestion is...{suggs.loc[suggs['rating'].astype(int).idxmin()]}\n")
     elif key == 'display':
         print(f"Displaying all results \n{suggs}\n")
-                
+
     else:
         print(f"My suggestion is...{suggs}")
 
-        
