@@ -10,11 +10,11 @@ from IPython.display import display
 
 class BookRecords():
 
-    def __init__(self, data_path="./df_books.csv"):
+    def __init__(self, data_path="./df_book.csv"):
         # Check existence of dataset
         if not os.path.exists(data_path):
             raise AssertionError(f"Provided path \'{data_path}\' doesn\'t exist")
-        self.data = pd.read_csv(data_path, sep=';', encoding='latin1', skip_blank_lines=True)
+        self.data = pd.read_csv(data_path, sep = ';', encoding = 'latin1', skip_blank_lines = True)
         self.data = self.data.dropna()
         self.labels = self.data.columns.values
         self.genres = self.data['genre'].unique()
@@ -32,7 +32,7 @@ class BookRecords():
     def search(self, label, keyword, out_label=None):
         # Given a keyword searches among a specific column, 
         # returns all matching items
-        mask = self[label].str.contains(keyword, case=False, regex=False, na=False).values
+        mask = self[label].str.contains(keyword, case = False, regex = False, na = False).values
         if out_label is not None:
             out = self[out_label][mask]
         else:
