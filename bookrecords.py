@@ -17,6 +17,7 @@ class BookRecords():
         self.data = pd.read_csv(data_path, sep=';', encoding='latin1', skip_blank_lines=True)
         self.data = self.data.dropna()
         self.labels = self.data.columns.values
+        self.genres = self.data['genre'].unique()
 
     def __len__(self):
         # Returns the length of the input
