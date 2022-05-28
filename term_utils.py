@@ -83,5 +83,5 @@ def input_suggestion(dataset):
         print(f"Displaying all results \n{suggs}\n")
 
     else:
-        print(f"My suggestion is...{suggs}")
+        print(f"My suggestion is... {suggs}")
 
