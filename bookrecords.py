@@ -2,10 +2,7 @@
 
 import os
 import sys
-import numpy as np
 import pandas as pd
-from IPython.display import display
-# import seaborn as sb
 
 
 class BookRecords():
