@@ -7,6 +7,8 @@ def input_search(dataset):
         criterion = None
         while criterion not in data.labels:
             criterion = input(f"------------------------------------------------\nPlease insert which criterion you want to restrict your research to... \n Choose among the following: {data.labels})\n")
+            if criterion == 'exit':
+                return None
             if criterion not in data.labels:
                 print(f"{criterion} not recognized please try again...")
         string = input(f"------------------------------------------------\nNow type the string you want to search: \n")
@@ -21,8 +23,9 @@ def input_search(dataset):
         # asking to refine the search
         if len(data) > 1:
             print(f"------------------------------------------------\nThe search gave {len(data)} matching outputs, do you want to refine the search?")
-            cmd = input("Type \n-no- if you want to stop the search\n-display- to display the outputs: \n").lower()
+            cmd = input("Type \n-no- if you want to display and stop the search\n-display- to only display the outputs: \n").lower()
             if cmd == 'no':
+                print(f'\nKeyword - {string} - matched: \n\t{result.values}\n\n')
                 break
             elif cmd == 'display':
                 print(f'\nKeyword - {string} - matched: \n\t{result.values}\n\n')
@@ -36,12 +39,16 @@ def input_request(dataset):
     while criterion not in dataset.labels:
         # asking on which criterion to get the info
         criterion = input(f"------------------------------------------------\nPlease insert which criterion you want me to display... \n Choose among the following: {dataset.labels})\n")
+        if criterion == 'exit':
+            return None
         if criterion not in dataset.labels:
             print(f"{criterion} not recognized please try again...")
     title = None
     while title not in dataset['title'].values:
         # asking for which book you want the info
         title = input(f"------------------------------------------------\nPlease input the title of the book you are looking for:\n")
+        if title == 'exit':
+            return None
         if title not in dataset['title'].values:
             result, _ = dataset.search('title', title)
             print(f'Book title {title} not present in dataset...\n\nDid you mean one of these: {result.values}???')
@@ -55,6 +62,8 @@ def input_suggestion(dataset):
     genre = None
     while genre not in dataset.genres:
         genre = input(f"------------------------------------------------\nPlease tell me which is your favourite genre among... \n Choose among the following: {dataset.genres})\n")
+        if genre == 'exit':
+            return None
         if genre not in dataset.genres:
             print(f"{genre} not recognized please try again...")
     # get suggestion list by genre
@@ -65,6 +74,8 @@ def input_suggestion(dataset):
         while key not in opts:
             # asking on which option to base the suggestion
             key = input(f"------------------------------------------------\nType:\n\n- recent - for most recent title\n- old - for oldest title\n- max_page - for maximum page number\n- min_page - for minimum page number\n- best - for best book\n- worst - for worst book\n- display - if you want me to show all of them\n\n")
+            if key == 'exit':
+                return None
             if key not in opts:
                 print(f"Input {key} not recognized, please try again...")
     if key == 'recent':
