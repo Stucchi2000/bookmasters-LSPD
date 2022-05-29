@@ -47,7 +47,7 @@ Asks the user to chose among what columns to restrict the search if not present,
 - **input_suggestion():** function asks you genre you are interested in, if not present asks it again. Then it asks you which option you would like to choose among the available ones, if recent it'll return the most recent book of the category. The options are max_page to get longest, min_page to get the shortest, old to get the oldest and so on. 
 
 
-##Main
+## Main
 
 The main.py file is the Python script meant to allow the user-application interaction. This should be the last file of the three to be run and once done your bash shell should look like this: 
 
