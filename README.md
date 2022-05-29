@@ -2,18 +2,18 @@
 
 ## The project
 
-The purpose of the Bookmasters project is to create a simple interface that when it comes to reading everyone willing to search for information about books could get them by using such tool.
+The purpose of the Bookmasters project is to create a simple interface that prompts the user to interact with a database containing books to ask for information, suggestions or search for entries in a flexible and guided way.
 
 ## Installation
 
-Use the command git clone https://github.com/Stucchi2000/bookmasters-LSPD.git in the bash of your computer to locally download the git repository containing all the packages and modules. The libraries required to properly run the programs are:
+Use the command git clone https://github.com/Stucchi2000/bookmasters-LSPD.git in the terminal of your computer to locally download the git repository containing all the packages and modules. The libraries required to properly run the programs are:
 
 os
-sys
 pandas
-numpy
 argparse
-Ipython.display  
+
+Run the command:
+>> python main.py
 
 ## Dataset
 
@@ -27,11 +27,15 @@ The dataset is composed by 41 entries and 8 columns, providing information about
 
 The module contains a Python class, named BookRecords() which has been used to store the functions we needed. The functions developed are three. 
 
- - **The search():** function returns all the dataset entries over one column matching a given keyword. Optionally it can also override the output column with another column and provide the corresponding index matching elements.
+- **__len__():** basic class method that overrides the standard python method and outputs the number of entries in the dataset.
 
-- **The get_info():** function returns, given a specific column label, the entry of the asked book
+- **__getitem__():** overrides the standard python method granting a easier way to select dataframe columns as elements of the class.
 
-- **The suggestion():** function returns a series of all the unique entries in dataset column genre
+- **search():** function returns all the dataset entries over one column matching a given keyword. Optionally it can also override the output column with another column and provide the corresponding index matching elements.
+
+- **get_info():** function returns, given a specific column label, the entry of the asked book
+
+- **suggestion():** function returns a series of all the unique entries in dataset column genre
 
  
 ### term_utils.py
@@ -47,12 +51,12 @@ Asks the user to chose among what columns to restrict the search if not present,
 - **input_suggestion():** function asks you genre you are interested in, if not present asks it again. Then it asks you which option you would like to choose among the available ones, if recent it'll return the most recent book of the category. The options are max_page to get longest, min_page to get the shortest, old to get the oldest and so on. 
 
 
-## Main
+##Main
 
 The main.py file is the Python script meant to allow the user-application interaction. This should be the last file of the three to be run and once done your bash shell should look like this: 
 
+*Starting point*
 
-<img width="433" alt="Starting point" src="https://user-images.githubusercontent.com/94078126/170876285-644c148e-b691-4e69-8476-80d7149f221a.png">
 
 
 You will have four options to choose among. 
@@ -61,26 +65,27 @@ You will have four options to choose among.
 
 - **Info:** allows you to get specific information about a book, anything that is contained in the dataset obviously. 
 
-- **Suggestion:** Last functionality helps you in search within the available genre any book you'd like based in a specific criterion for example a short story. 
+- **Suggestion:** Last functionality helps you in search within the available genre any book you'd like based on a specific criterion for example a short story. 
 
 ## Possible use cases 
 
 - **Question1:** Can I find all books within the dataset which authors name has W in it? 
-
-
-<img width="669" alt="Search input" src="https://user-images.githubusercontent.com/94078126/170876321-4d81c67d-4b9c-40a1-9267-063a92e945db.png">
-
+  **Search use case**
+  
+  <img width="669" alt="Search input" src="https://user-images.githubusercontent.com/94078126/170876321-4d81c67d-4b9c-40a1-9267-063a92e945db.png">
+  
   
 - **Question2** In which category the book "1984" lies? 
 
-
-<img width="664" alt="Info input" src="https://user-images.githubusercontent.com/94078126/170876356-eaaf0ac9-5e33-45ed-97c7-3b1432bcbe1b.png">
-
+  **Info use case**
+  
+  <img width="664" alt="Info input" src="https://user-images.githubusercontent.com/94078126/170876356-eaaf0ac9-5e33-45ed-97c7-3b1432bcbe1b.png">
   
 - **Question3** What is the oldest avaliable novel written?
 
-
-<img width="686" alt="Suggestion input" src="https://user-images.githubusercontent.com/94078126/170876373-ba9897d6-9970-4685-8c21-0bece55ee538.png">
+  **Suggestion use case**
+  
+  <img width="686" alt="Suggestion input" src="https://user-images.githubusercontent.com/94078126/170876373-ba9897d6-9970-4685-8c21-0bece55ee538.png">
 
 
 
